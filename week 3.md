@@ -37,6 +37,21 @@ there is also use of a slicer to break down the data by use of buttons to segmen
 <img width="935" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/61ec2101-e937-40b4-9908-0c48e74dbd0f">
 
 
+****************************************************************************************************************
+## Vlookup function
+
+- It is used to see if a value exists ib a range of values
+- to use vlookup we need to create a named range (Block of cells which has a a name and can be referenced
+
+#### The tasks include:
+- [x] create a name range
+- [ ] hlookup does the same however it does it horizontally(left to right)
+- [ ] hlookup value what are we looking for
+- [ ] table array: our range or drag and select
+- [ ] col index namwe: column number in range with what we want
+- [ ] range lookup: true(Closest match)/false (should be exact match)
+- [ ] if error(vlookup(), "something")
+
 
 
 
