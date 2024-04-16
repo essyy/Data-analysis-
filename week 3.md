@@ -1,5 +1,5 @@
-Conditional Formatting in excel
-
+**Conditional Formatting in excel
+**
 There is use of conditional formatting to present the data infromation in a more easy manner.
 there are various options including the following:
 
