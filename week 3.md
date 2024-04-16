@@ -1,4 +1,4 @@
-##Conditional Formatting in excel
+## Conditional Formatting in excel
 
 There is use of conditional formatting to present the data information more easily.
 there are various options including the following:
@@ -6,19 +6,19 @@ there are various options including the following:
 Highlight cell rules(Greater than, less than, etc)
 <img width="742" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/4e7d5d2c-b737-4bd2-ab92-e49d4657ee18">
 
-*Top/ bottom Rules
+* Top/ bottom Rules
 
-*Data bars
+* Data bars
 <img width="411" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/a7d2fd67-35d5-4156-9038-3716cedd0c5c">
 
-*Color scales
+* Color scales
 <img width="530" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/c851fb33-757e-4cf8-995f-27fc1b21562f">
 
-*Icon sets
+* Icon sets
 <img width="370" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/1e713a86-d891-4f56-ace2-d91ca7eb3e28">
 
 
-##USE OF PIVOT tables and Charts
+## USE OF PIVOT tables and Charts
 
 The pivot table enables cross-tabulated data stored in Excel lists
 there is also filtering to edit the data that is not required at that moment 
