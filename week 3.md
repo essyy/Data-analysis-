@@ -73,7 +73,7 @@ there is also use of a slicer to break down the data by use of buttons to segmen
 - pivot tables - data summarization tool used in processing data. They can be used to give quick and clutter-free summary tables
 - vlookup
 - Data mapping - matching fields of one database to another. It makes it possible to determine the compatibility of data
-- depending on schema, data mapping can be done easily ... ** SQL TOPIC ON THE TYPE OF KEYS !! ** 
+- depending on schema, data mapping can be done easily ... **SQL TOPIC ON THE TYPE OF KEYS !!** 
 
 
 
