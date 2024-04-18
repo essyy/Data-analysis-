@@ -40,18 +40,40 @@ there is also use of a slicer to break down the data by use of buttons to segmen
 ****************************************************************************************************************
 ## Vlookup function
 
-- It is used to see if a value exists ib a range of values
-- to use vlookup we need to create a named range (Block of cells which has a a name and can be referenced
+- It is used to see if a value exists iS a range of values
+- to use vlookup we need to create a named range (Block of cells that has a a name and can be referenced
 
 #### The tasks include:
-- [x] create a name range
+- [x] Create a name range
 - [ ] hlookup does the same however it does it horizontally(left to right)
 - [ ] hlookup value what are we looking for
 - [ ] table array: our range or drag and select
-- [ ] col index namwe: column number in range with what we want
+- [ ] col index name: column number in range with what we want
 - [ ] range lookup: true(Closest match)/false (should be exact match)
 - [ ] if error(vlookup(), "something")
 
+## Data cleaning
+
+- Data errors are causeD by the people that enter the wrong details of data
+- Steps in data cleaning include:
+  1. Remove any duplicate rows/ columns
+  2. Spelling & punctuation
+  3. Dealing with nulls - conditional formatting to determine which data is null 
+      or inaccurately stated
+  4. Dealing with spaces in the data - use of trim
+
+- conditional formatting can be done to assess null values via highlighting them
+- You can also use a delimiter /separator to split text into columns
+- concatenate- add two or more columns comprising strings
+
+## Use of functions to be able to obtain information can include the use of countif, sumif , len to find the length of the string, left, right, mid function as well
+
+## Other tools may include:
+- Sorting - to arrange data into a meaningful format
+- pivot tables - data summarization tool used in processing data. They can be used to give quick and clutter-free summary tables
+- vlookup
+- Data mapping - matching fields of one database to another. It makes it possible to determine the compatibility of data
+- depending on schema, data mapping can be done easily ... ** SQL TOPIC ON THE TYPE OF KEYS !! ** 
 
 
 
