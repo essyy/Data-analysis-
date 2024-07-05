@@ -29,6 +29,8 @@ Sort retrieved Data
 There is : 
 ORDER BY - the column to sort by 
 
+
+
 In using the ORDER BY command, dont state ORDER BY 2,3 etc The issue is with adding extra columns, this may have an issue always provide an explicit order.
 You can have as many columns with the ORDER BY command
 
