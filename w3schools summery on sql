@@ -1,0 +1,705 @@
+Some of the SQL commands are: 
+
+SELECT - extracts data from a database
+UPDATE - updates data in a database
+DELETE - deletes data from a database
+INSERT INTO - inserts new data into a database
+CREATE DATABASE - creates a new database
+ALTER DATABASE - modifies a database
+CREATE TABLE - creates a new table
+ALTER TABLE - modifies a table
+DROP TABLE - deletes a table
+CREATE INDEX - creates an index (search key)
+DROP INDEX - deletes an index
+
+
+y using the DISTINCT keyword in a function called COUNT, we can return the number of different countries.
+The WHERE clause is used to filter records.
+It is used to extract only those records that fulfill a specified condition.
+The WHERE clause is not only used in SELECT statements, it is also used in UPDATE, DELETE, etc.!
+
+In writing the customer Id, the value should be in number format without any brackets to encompass the number 
+
+
+Other operators include:
+
+=
+Equal
+Try it
+>
+Greater than
+Try it
+<
+Less than
+Try it
+>=
+Greater than or equal
+Try it
+<=
+Less than or equal
+Try it
+<>
+Not equal. Note: In some versions of SQL this operator may be written as !=
+Try it
+BETWEEN
+Between a certain range
+Try it
+LIKE
+Search for a pattern
+Try it
+IN
+To specify multiple possible values for a colu
+
+
+
+
+Order by - this command is used to sort in ascending or descending order
+To have the arrangement in ascending order, write it in ASC| DESC after the final command 
+
+Example:
+
+SELECT *FROM Products
+ORDER BY Price DESC;
+
+You can use both ASC & DESC in the same commands. Example: 
+
+SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+
+
+
+AND OPERATOR
+
+It can be used to add more conditions to the Where command
+The AND operator displays a record if all the conditions are TRUE.
+The OR operator displays a record if any of the conditions are TRUE.
+
+You can use the AND and OR command together 
+Example: 
+SELECT * FROM Customers
+WHERE Country = 'Spain' AND (CustomerName LIKE 'G%' OR CustomerName LIKE 'R%');
+
+The % A percent sign stands for an unknown string of 0 or more characters in sql
+
+THE OR operator 
+
+It is used to provide info on both conditions stated 
+
+THE NOT Operator
+
+It is used in combination with other operators to give the opposite result 
+
+Example
+
+SELECT * FROM Customers
+WHERE NOT Country = ‘Spain’;
+
+You can also use this in the NOT Like command
+Example:
+
+SELECT * FROM Customers
+WHERE CustomerName NOT LIKE ‘%A’;
+
+You can use it also in the conditions; BETWEEN, IN , GREATER THAN, LESS THAN
+
+INSERTING VALUES INTO DB
+
+
+The command is : INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+NOte: you dont have to add the column part if you are inserting values to all the columns in the table
+The UNIQUE id/ Primary key is added as an auto increment field and will be generated automatically and teh new record is inserted into the table
+NOTE: you can insert multiple vales in the same thread after the first command . This will insert all teh other values into teh table
+
+NULL Values
+
+These are fields with no values
+Note: A NULL value is different from a zero value or a field that contains spaces. A field with a NULL value is one that has been left blank during record creation
+
+The command to check if the values are null or not,  IS NULL and IS NOT NULL
+
+
+UPDATE COMMAND
+
+The command is used to modify the existing records in the table
+
+
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+Note: IF you dont specify the where condition,. The whole table wil be updated
+
+DELETE 
+This command is used to delete columns in teh table
+The syntax is: DELETE FROM table_name 
+NOTE: iF YOU DONT USE TEH WHERE COMMAND , the command deletes all data
+
+SQL TOP, LIMIT, FETCH FIRST or ROWNUM Clause
+
+
+The SELECT TOP clause is used to specify the number of records to return.
+The SELECT TOP clause is useful on large tables with thousands of record
+
+
+Example: SELECT TOP 3 * FROM Customers;
+It prints the top 3 customer details
+Example:
+SELECT TOP 50 PERCENT * FROM Customers;
+SELECT * FROM Customers
+FETCH FIRST 50 PERCENT ROWS ONLY;
+SELECT TOP 3 * FROM Customers
+WHERE Country='Germany';
+
+
+SELECT * FROM Customers
+WHERE Country='Germany'
+LIMIT 3;
+
+
+SELECT * FROM Customers
+WHERE Country='Germany'
+FETCH FIRST 3 ROWS ONLY;
+
+
+SELECT TOP 3 * FROM Customers
+ORDER BY CustomerName DESC;
+SQL Aggregate Functions
+An aggregate function is a function that performs a calculation on a set of values, and returns a single value.
+Aggregate functions are often used with the GROUP BY clause of the SELECT statement. The GROUP BY clause splits the result-set into groups of values and the aggregate function can be used to return a single value for each group.
+The most commonly used SQL aggregate functions are:
+MIN() - returns the smallest value within the selected column
+MAX() - returns the largest value within the selected column
+COUNT() - returns the number of rows in a set
+SUM() - returns the total sum of a numerical column
+AVG() - returns the average value of a numerical column
+Aggregate functions ignore null values (except for COUNT()).
+The syntax is
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+When you use MIN() or MAX(), the returned column will not have a descriptive name. To give the column a descriptive name, use the AS keyword:
+Example: SELECT MIN(Price) AS SmallestPr
+FROM Products; 
+
+
+One can use the GROUP BY with the smallest price category 
+Example:
+SELECT MIN(Price) AS SmallestPrice, CategoryID
+FROM Products
+GROUP BY CategoryID;
+
+
+
+The COUNT() function returns the number of rows that matches a specified criterion.
+Use the DISTINCT keywords in the COUNT() function to specify the columns that are not repeated
+Use an Alias
+Give the counted column a name by using the AS keyword
+The as is used to name the column “” given in the running of the code
+Example: 
+SELECT COUNT(*) AS [Number of records]
+FROM Products;
+The SUM() function returns the total sum of a numeric column.
+Using sum, one can carry out calculations using the code: exampl:
+
+SELECT SUM(Price * Quantity)
+FROM OrderDetails;
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+There are two wildcards often used in conjunction with the LIKE operator:
+ The percent sign % represents zero, one, or multiple characters
+ The underscore sign _ represents one, single character
+The _ wildcard represents a single character.
+It can be any character or number, but each _ represents one, and only one, character.
+To return records that contains a specific letter or phrase, add the % both before and after the letter or phrase.
+
+
+The SQL IN Operator
+The IN operator allows you to specify multiple values in a WHERE clause.
+The IN operator is a shorthand for multiple OR conditions.
+One can also use NOT IN  in the sql parameters
+
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+The BETWEEN operator is inclusive: begin and end values are included. 
+SQL Aliases
+SQL aliases are used to give a table, or a column in a table, a temporary name.
+Aliases are often used to make column names more readable.
+An alias only exists for the duration of that query.
+An alias is created with the AS keyword.
+It si aslo optional to omit the AS 
+
+
+
+
+When using Aliases with a space character, the use of “” should be used 
+
+
+SQL JOINS
+This is combining the tables 
+This is dependant on whether there is a similarity in the table
+Inner join - only returns connected matching rows
+Left Join - return all connected rows and unconnected rows from left table
+Full Join - Returns the connected rows & unconnected rows both left and right tables
+Right join - Returns all connected rows and unconnectde rows from the right table
+
+
+The types of joins can be explained by a venn diagram 
+The Alias can be used to make commands shorter
+
+
+
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+      
+
+
+-Syntax for inner join 
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+
+
+Select  Customers.CustomerID,Orders.OrderID
+From Customers
+Left Join Orders
+ON Customer.CustomerID = Orders.CustomerID
+
+SQL Self Join
+A self join is a regular join, but the table is joined with itself.
+
+
+Union - it is used to combine two commands
+Example: SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+The GROUP BY statement is often used with aggregate functions (COUNT(), MAX(), MIN(), SUM(), AVG()) to group the result-set by one or more columns
+
+
+The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+THE SYNTAX IS 
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+
+
+The EXISTS operator is used to test for the existence of any record in a subquery.
+The EXISTS operator returns TRUE if the subquery returns one or more records.
+Syntax:
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+
+The ANY and ALL operators allow you to perform a comparison between a single column value and a range of other values.
+
+Syntax: 
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+
+The SELECT INTO statement copies data from one table into a new table
+Synyax:
+SELECT *
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+
+he INSERT INTO SELECT statement copies data from one table and inserts it into another table.
+The INSERT INTO SELECT statement requires that the data types in source and target tables match.
+
+
+The CASE expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+SQL IFNULL(), ISNULL(), COALESCE(), and NVL() Functions
+They are used to check if values are null
+
+
+
+A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again.
+So if you have an SQL query that you write over and over again, save it as a stored procedure, and then just call it to execute it.
+You can also pass parameters to a stored procedure, so that the stored procedure can act based on the parameter value(s) that is passed.
+
+Syntax CREATE PROCEDURE procedure_name
+AS
+sql_statement
+GO;
+
+Sql statements:
+
+- (this )
+Multi-line comments start with /* and end with */.
+
+
+
+Orilley classes by Data with Danny 
+
+-- What is the region value of the 8th row from trading.members table
+
+SELECT region
+FROM trading.members
+Limit 8;
+/* the semi colon is not a must but when running multiple sql scripts will be problematic */
+
+
+
+Code the right one is offset 
+SELECT  *
+From trading.members
+LIMIT 1 OFFSET 7;
+
+
+Offset means how many rows you would want to skip 
+
+Order in the wanted list 
+SELECT *
+
+FROM trading.members
+
+ORDER BY first_name ASC
+
+
+
+
+– the naming order is automatically done in strings
+Task 3
+Count the number of records from the trading.members 
+table which have United States as the region value*/
+SELECT
+  COUNT(*)
+FROM
+  trading.members
+WHERE
+  members.region = 'United States';
+
+
+
+
+You can use Aliases to ensure it is easy to grasp the concepts especially when presenting to others
+
+The use of double quotes there will be trying to find a column with that detail and it will return an error
+
+Select only the first_name and region columns
+  for mentors who are not from Australia
+  */
+  
+  SELECT first_name, region
+  
+  FROM trading.members
+  
+  WHERE region <> 'Australia'
+
+Return only the unique region values from the trading.members table and sort the 
+  output by reverse alphabetical order*/
+  SELECT DISTINCT members.region 
+  
+  FROM trading.members
+  
+  ORDER BY  region DESC;
+
+
+The DISTINCT keyword can also be used as SELECT DISTINCT * FROM to return only the unique rows from an entire dataset.
+
+Aggregate functions 
+
+Clauses used:
+
+Between - this is used to find details on the data given 
+Inequalities
+Dates and numbers 
+
+Activity Two 
+/*
+-- How many records are there per ticker value in the trading.prices table
+per ticker - know it will be a group by method
+*/
+SELECT ticker, 
+COUNT(*) AS record_count
+
+FROM trading.prices
+
+GROUP BY ticker;
+
+
+In grp by you can use 1,2 which makes it easier than stating the details but it is better to explicitly state them instead 
+
+
+What is the maximum, minimum values for the price
+column for both Bitcoin and Ethereum in 2020?
+
+*/
+SELECT
+  ticker,
+  MAX(price) AS max_price,
+  MIN(price) AS min_price
+FROM
+  trading.prices
+WHERE
+  market_date BETWEEN '2020-12-31' AND '2020-01-01'
+GROUP BY
+  ticker;
+-- WHERE HAS TO go before group by
+
+HAVING is used after group by is complete 
+
+Include a calendar_year column with the year from 2017
+through to 2021
+Calculate a spread column which calculates
+the difference between the min and max prices
+Round the average price output to 2 decimal places
+Sort the output in chronological order with Bitcoin 
+records before Ethereum within each year
+*/
+
+SELECT ticker,
+EXTRACT(YEAR FROM market_date) AS calendar_year,
+MIN(price) AS min_price,
+MAX(price) AS max_price,
+AVG(price) AS average_price,
+ROUND(AVG(price)::NUMERIC, 2) AS average_price,
+MAX(price) - MIN(price) AS spread
+FROM trading.prices
+GROUP BY 
+ticker, 
+calendar_year
+ORDER BY 
+calendar_year,
+ticker;
+
+
+
+Option two 
+SELECT ticker,
+EXTRACT(YEAR FROM market_date) AS calendar_year,
+MIN(price) AS min_price,
+MAX(price) AS max_price,
+AVG(price) AS average_price,
+ROUND(AVG(price)::NUMERIC, 2) AS average_price,
+MAX(price) - MIN(price) AS spread
+FROM trading.prices
+WHERE EXTRACT(YEAR FROM market_date) IN (2017, 2018)
+GROUP BY 
+ticker, 
+calendar_year
+
+ORDER BY 
+calendar_year,
+ticker;
+
+
+
+
+SELECT ticker,
+EXTRACT(YEAR FROM market_date) AS calendar_year,
+MIN(price) AS min_price,
+MAX(price) AS max_price,
+AVG(price) AS average_price,
+ROUND(AVG(price)::NUMERIC, 2) AS average_price,
+MAX(price) - MIN(price) AS spread
+FROM trading.prices
+WHERE EXTRACT(YEAR FROM market_date) IN (2017, 2018)
+GROUP BY 
+ticker, 
+calendar_year
+HAVING ticker = 'BTC'
+ORDER BY 
+calendar_year,
+ticker;
+
+
+
+Explanation
+This question is very similar to what we've faced before, but this time we will need to generate a calendar_year column and include it into our GROUP BY clause, along with a few additonal operations.
+Firstly - we need to tackle the annual metrics by extracting the year from each record of our market_date column.
+Extracting Year From a Date
+The most simple method to find the YEAR value from a date field is to use the EXTRACT function.
+The syntax is easy to understand also in the relevant part of our solution: EXTRACT(YEAR FROM market_date) AS calendar_year
+Group By More Than 1 Column
+In this solution we also use a GROUP BY clause with 2 columns: the calendar_year and ticker
+This is similar to breaking down our dataset into even smaller groups - this time with the unique combinations of both ticker and calendar_year values.
+This allows us to calculate each of the aggregate functions independently for the annual metric calculations for both Bitcoin and Ethereum tickers.
+Spread Calculation
+We've seen the MIN, MAX and AVG functions before, but this time we will also need to calculate an additional spread column to find the difference between each annual MIN and MAX value per ticker.
+In our solution - we can see the MIN and MAX are implemented unchanged from what we've seen previously:
+MIN(price) AS min_price,
+MAX(price) AS max_price
+The spread value can also be implemented directly using MAX(price) - MIN(price) AS spread in our aggregate calculations.
+Rounding to 2 Decimal Places
+For the average price calculation - we need to incorporate the ROUND function to limit the output to just 2 decimal places.
+We can do this using the ROUND function with the calculated value as the first argument and number of decimal places as the second argument.
+However - the ROUND function needs to have an exact data type to use for this operation, and the AVG function returns us a floating point approximation instead of an exact data type!
+Luckily we can simply cast this variable to an exact NUMERIC type to get around this - we can use the shorthand method to apply a cast operation:
+ROUND(AVG(price)::NUMERIC, 2) AS avg_price
+Sorting the Output
+Finally we wish to sort the output using a multi-column sort.
+We need to sort the output in chronological order, and then Bitcoin should be shown first before Ethereum records.
+We can achieve this by using 2 column expressions in the ORDER BY clause.
+Because we need the chronological order for calendar_year, and date fields are sorted in exactly this way by default when used with the ORDER BY clause.
+Likewise - the ticker column is sorted by alphabetical order by default so BTC will show before ETH in our outputs.
+We will just need to implement this multi-sort using ORDER BY calendar_year, ticker
+SQL CAST function is mainly used to convert the expression from one data type to another data type
+
+/*What is the monthly average of the price column for each ticker 
+from January 2020 and after?
+
+Create a month_start column with the first day of each month
+Sort the output by ticker in alphabetical order and months in
+chronological order
+Round the average_price column to 2 decimal places
+*/
+SELECT 
+DATE_TRUNK('month', market_date) AS month_start,
+ROUND(AVG(price)::NUMERIC, 2) AS average_price
+FROM trading.prices
+
+WHERE market_date >= '2020-01-01'
+GROUP BY 
+ticker, month_start
+ORDER BY 
+ticker, month_start
+
+-- ******************
+``` SELECT ticker, DATE_TRUNC('MON', market_date)::DATE AS month_start, ROUND(AVG(price), 2) AS average_price FROM trading.prices WHERE market_date >= '2020-01-01' GROUP BY ticker, month_start ORDER BY ticker, month_start; ```{{copy}
+
+
+Case 3 
+
+/*Convert the volume column in the trading.prices
+table with an adjusted integer value to take into the unit values
+
+Return only the market_date, price, volume and
+adjusted_volume columns for the first 10 days of August 2021
+for Ethereum only
+
+*/
+
+SELECT market_date, 
+      price,
+      volume
+
+FROM trading.prices
+-- add brackets to differentiate the complex conditions added
+WHERE ( market_date BETWEEN DATE '2021=08-01' AND DATE '2021=08-10')
+ 
+ AND (ticker = 'ETH')
+
+
+
+
+Cast  as(::) it is used to convert s character to the desired output
+
+
+
+
+Option two /*Convert the volume column in the trading.prices
+table with an adjusted integer value to take into the unit values
+
+Return only the market_date, price, volume and
+adjusted_volume columns for the first 10 days of August 2021
+for Ethereum only
+
+*/
+
+SELECT market_date, price,volume
+      
+  CASE
+  WHEN RIGHT(volume, 1) = 'K' 
+  THEN LEFT(volume, LENGTH(volume)-1)::NUMERIC * 1000
+  WHEN RIGHT(volume, 1) = 'M' 
+  THEN LEFT(volume, LENGTH(volume)-1)::NUMERIC * 1000000 
+  WHEN volume = '-' THEN 0 
+  END AS adjusted_volume
+
+FROM trading.prices
+-- add brackets to differentiate the complex conditions added
+WHERE ( market_date BETWEEN DATE '2021-08-01' AND DATE '2021-08-10')
+ 
+ AND (ticker = 'ETH')
+
+
+
+/*
+How many "breakout" days were there in 2020 where the price column
+is greater than the open column for each ticker? In the
+same query also calculate the number of "non breakout" days where 
+the price column was lower than or equal to the open column.
+ticker	breakout_days	non_breakout_days
+BTC	207	159
+ETH	200	166
+Explanation
+T
+*******************************check on this 
+
+
+SELECT 
+ticker,
+SUM(
+  CASE
+    WHEN price > open
+      THEN 1
+    ELSE 0 
+ END
+) AS breakout_days,
+SUM(
+  CASE
+    WHEN price <= open
+      THEN 1
+    ELSE 0 
+ END
+) AS non-breakout_days
+
+FROM trading.prices
+WHERE EXTRACT(YEAR FROM market_date) = 2020
+GROUP BY ticker;
+
+
+
+
+
+The 
+
+/*What was the final quantity Bitcoin
+and Ethereum held by all Data With Danny mentors based
+off the trading.transactions table?*/
+
+
+
+
+
+Rank values –
+Joins
+You can join multiple tables together as long as there are columns in common with at least two of the tables
+
+
+Python projects – code academy 
+There is no wrong code/project as long as you enjoy it 
+Dont worry what the haters will say
+
+
+
+
+Use sql – major
+
+Debug code – AI 
+Pick up python as your next language 
+Focus on trying to solve difficult problems
+Project portfolio – look at github portfolios they will go a long way 
+Web dev - portfolio website
+Get cloud exposure as soon as you can – this is important 
