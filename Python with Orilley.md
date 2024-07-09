@@ -24,4 +24,7 @@ What we want , is a string that has dynamic content. That is some part of it wil
 - Inside the curly braces, all code is accepted and will run
 ## input causes the user to be asked for a prompt 
 -- The right side runs before the left side
-
+## Conditions
+- =, ==(Returns true or false),
+- If, else
+- 
