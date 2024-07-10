@@ -145,3 +145,180 @@ HAVING tornado
 ORDER BY year DESC ;
 
 <img width="229" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/99f063e9-015a-4e31-82b6-06142c87c3db">
+## Continuation , Use of cases
+SELECT year , month,
+SUM(CASE WHEN tornado = 1 THEN precipitation ELSE 0 END) AS tornado_precipitation,
+SUM(CASE WHEN tornado = 0 THEN precipitation ELSE 0 END) AS non_torndao_precipitation
+FROM STATION_DATA
+WHERE year >= 1990
+GROUP BY year, month;
+<img width="761" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/7218a7fa-96d6-4c6f-aaf9-43e234681167">
+-Get the average temperature grouped by quarter and year, where a “quarter” is “Q1”, “Q2”, “Q3”, or “Q4”
+reflecting months 1-3, 4-6, 7-9, and 10-12 respectively. 
+<img width="761" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/a0c5a404-8fc0-4ee5-a0c7-fbb7a51715cb">
+SELECT report_code, year,
+CASE 
+WHEN month >= 1 and month <= 3 THEN 'Q1' 
+WHEN month >=4 and month <= 6 THEN 'Q2' 
+WHEN month >=7 AND month <= 9 THEN 'Q3'
+ELSE 'Q4' end as quarter 
+from STATION_DATA
+GROUP BY year, quarter;
+One can also use 1, 2 which represents the two conditions which is year and quarter 
+
+<img width="137" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/e3d2c443-4ead-4e33-94c1-d51251f4e7d5">
+##  Parent / Child tables
+<img width="344" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/f6d8b5d0-11ea-49e6-94fa-88bf5db33934">
+- Parent supplies data the child receives the data 
+- The parent has the primary key while the foreign key is the child key. The primary key is the unique ID 
+
+- Inner join
+- SELECT CUSTOMER.CUSTOMER_ID,
+CUSTOMER_ORDER.CUSTOMER_ID,
+name, order_id,
+ship_date,
+street_address,city,
+state,
+zip,
+product_id,
+order_qty
+FROM CUSTOMER
+INNER JOIN CUSTOMER_ORDER ON CUSTOMER.CUSTOMER_ID = CUSTOMER_ORDER.CUSTOMER_ID
+<img width="953" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/b3f97844-1e67-42e6-9408-fc039fc44dd4">
+## This syntax is similar to join syntax but is not recommended 
+
+<img width="339" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/7daf96c1-a62a-41f0-b776-080ad71daf8b">
+# *** NOT recommended
+## Left Join 
+SELECT CUSTOMER.CUSTOMER_ID,
+CUSTOMER_ORDER.CUSTOMER_ID,
+name, order_id,
+ship_date,
+street_address,city,
+state,
+zip,
+product_id,
+order_qty
+FROM CUSTOMER
+LEFT JOIN CUSTOMER_ORDER ON CUSTOMER.CUSTOMER_ID = CUSTOMER_ORDER.CUSTOMER_ID
+
+<img width="958" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/9ca1ec7c-b6d0-4a87-94dd-3d1041b973b4">
+
+
+### to check null values
+
+
+;
+1
+SELECT CUSTOMER.CUSTOMER_ID,
+2
+CUSTOMER_ORDER.CUSTOMER_ID,
+3
+name, order_id,
+4
+ship_date,
+5
+street_address,city,
+6
+state,
+7
+zip,
+8
+product_id,
+9
+order_qty
+10
+FROM CUSTOMER
+11
+LEFT JOIN CUSTOMER_ORDER ON CUSTOMER.CUSTOMER_ID = CUSTOMER_ORDER.CUSTOMER_ID
+12
+WHERE order_id ISNULL;
+SELECT CUSTOMER.CUSTOMER_ID,
+CUSTOMER_ORDER.CUSTOMER_ID,
+name, order_id,
+ship_date,
+street_address,city,
+state,
+zip,
+product_id,
+order_qty
+FROM CUSTOMER
+LEFT JOIN CUSTOMER_ORDER ON CUSTOMER.CUSTOMER_ID = CUSTOMER_ORDER.CUSTOMER_ID
+WHERE order_id ISNULL;
+<img width="685" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/17eae7ea-743c-41e8-af3f-4b0d10a8ba60">
+- The left table is the one that is used the one after on is the right one
+- Joining Multiple Tables
+- SELECT 
+order_id,
+CUSTOMER.CUSTOMER_ID,
+CUSTOMER_ORDER.CUSTOMER_ID,
+name AS Customer_name, 
+street_address,
+city,
+state,
+zip,
+product.product_id,
+description,
+order_qty
+FROM CUSTOMER
+INNER JOIN CUSTOMER_ORDER ON CUSTOMER.CUSTOMER_ID = CUSTOMER_ORDER.CUSTOMER_ID
+INNER JOIN PRODUCT
+ON PRODUCT.PRODUCT_ID = CUSTOMER_ORDER.PRODUCT_ID
+<img width="959" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/00a05978-84cc-4b86-ab43-da061b65e390">
+### Remember to use the Alias if you want to name tables
+-- uSE OF left join
+
+SELECT 
+order_id,
+CUSTOMER.CUSTOMER_ID,
+CUSTOMER_ORDER.CUSTOMER_ID,
+COALESCE(SUM(order_qty * price), 0) AS TOTAL_REVENUE
+FROM CUSTOMER
+LEFT JOIN CUSTOMER_ORDER ON CUSTOMER.CUSTOMER_ID = CUSTOMER_ORDER.CUSTOMER_ID
+LEFT JOIN PRODUCT
+ON PRODUCT.PRODUCT_ID = CUSTOMER_ORDER.PRODUCT_ID
+
+GROUP by 1, 2
+
+The COALESCE is used to convert null values to 0 
+<img width="571" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/892ef393-61fe-4a65-a286-38864507ebf0">
+Task 7
+
+<img width="395" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/3e5ee770-c648-41ca-944a-f1bcd3fc393a">
+SELECT 
+order_id,
+order_date,
+description,
+CUSTOMER_ORDER.PRODUCT_ID,
+PRODUCT.PRODUCT_ID
+
+FROM CUSTOMER_ORDER
+INNER JOIN PRODUCT
+ON PRODUCT.PRODUCT_ID = CUSTOMER_ORDER.PRODUCT_ID
+
+GROUP by 1, 2;
+
+<img width="947" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/d1bbe28e-c951-4fbe-a9fe-bc2d61f5a6d9">
+
+Task 8 
+
+<img width="404" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/47ea20b5-731c-4839-ab56-8147a64c576f">
+SELECT 
+description,
+CUSTOMER_ORDER.PRODUCT_ID,
+PRODUCT.PRODUCT_ID,
+(price * order_qty) As Total_Revenue
+FROM CUSTOMER_ORDER
+LEFT JOIN PRODUCT
+ON PRODUCT.PRODUCT_ID = CUSTOMER_ORDER.PRODUCT_ID
+
+GROUP by 1, 2;
+<img width="953" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/c461d25d-bed4-40fb-8ff5-170dd1b9365f">
+Solution 2 
+<img width="302" alt="image" src="https://github.com/essyy/Data-analysis-/assets/54889306/b65746ff-c4bb-452e-b2c2-456fd7143ccb">
+### Planning a DB
+1. Carry out data questions - how much data will be populated into the tables, where is it coming from?who will be responsible?, is there need to automate the tables
+2. Security qns - who has access, beware of SQL injection. Dont concatenate strings. *** Check on how to use python and sql together
+3. 3min_datascience ()
+IN transactions, by stating END transactions enables one to undo using ROLLBACK
+-- Indicies -- slow down the code
