@@ -274,6 +274,8 @@ ON Customer.CustomerID = Orders.CustomerID
 SQL Self Join
 A self join is a regular join, but the table is joined with itself.
 
+## There is also other joins such as Left Anti Join & Right Anti Join
+- They join a table that has a negation of what is not in both tables its like the opposite of inner join()
 
 Union - it is used to combine two commands
 Example: SELECT City FROM Customers
